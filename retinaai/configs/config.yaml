@@ -1,0 +1,30 @@
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  train_csv: "data/raw/trainLabels.csv"
+  image_size: 300         # EfficientNet-B3 native input size
+  num_classes: 5           # No_DR, Mild, Moderate, Severe, Proliferative_DR
+
+model:
+  backbone: "efficientnet_b3"
+  pretrained: true
+  dropout: 0.3
+
+train:
+  batch_size: 16
+  epochs: 30
+  lr: 0.0001
+  weight_decay: 0.00001
+  optimizer: "adamw"
+  scheduler: "cosine"
+  val_split: 0.15
+  seed: 42
+  checkpoint_dir: "checkpoints"
+
+gradcam:
+  target_layer: "conv_head"   # last conv layer of EfficientNet in timm
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  model_path: "checkpoints/best_model.pth"
