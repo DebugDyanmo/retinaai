@@ -1,16 +1,19 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import cv2
 import base64
+import os
 from api.inference import predict, load_model
 from api.schemas import PredictionResponse, ErrorResponse
 
 app = FastAPI(title="RetinaAI", description="Explainable DR Detection API")
-from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -18,18 +21,17 @@ app.add_middleware(
 ALLOWED_CONTENT_TYPES = {'image/jpeg', 'image/png', 'image/jpg'}
 MAX_FILE_SIZE_MB = 10
 
+
 @app.on_event("startup")
 def startup_event():
     load_model()
     print("Model loaded and ready")
 
-@app.get("/")
-def root():
-    return {"message": "RetinaAI API is running", "docs": "/docs"}
 
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
 
 @app.post("/predict", response_model=PredictionResponse, responses={400: {"model": ErrorResponse}})
 async def predict_endpoint(file: UploadFile = File(...)):
@@ -64,3 +66,12 @@ async def predict_endpoint(file: UploadFile = File(...)):
         low_confidence_warning=result['low_confidence_warning'],
         heatmap_base64=heatmap_b64
     )
+
+
+frontend_dist = os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist")
+app.mount("/assets", StaticFiles(directory=os.path.join(frontend_dist, "assets")), name="assets")
+
+
+@app.get("/{full_path:path}")
+async def serve_frontend(full_path: str):
+    return FileResponse(os.path.join(frontend_dist, "index.html"))
