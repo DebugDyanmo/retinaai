@@ -5,10 +5,7 @@ severity across 5 clinical classes, and explains its predictions using
 Grad-CAM — so the model's reasoning is visible, not a black box.
 
 **[Live Demo](#)** ← add your deployed link here once live
-**[GitHub](https://github.com/DebugDyanmo/retinaai)**
 
-![RetinaAI Demo](docs/demo-screenshot.png)
-<!-- Add a screenshot of your frontend here, saved at docs/demo-screenshot.png -->
 
 ---
 
