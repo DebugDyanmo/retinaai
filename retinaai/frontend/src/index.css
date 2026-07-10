@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root[data-theme='dark'] {
+  --bg: #0B0E14;
+  --bg-elevated: #141A24;
+  --border: #232A38;
+  --border-subtle: #2A3242;
+  --text-primary: #EDEFF3;
+  --text-secondary: #9099A8;
+  --text-tertiary: #7C8494;
+  --text-quaternary: #5C6373;
+  --accent: #D9772E;
+  --accent-hover: #C4661F;
+  --accent-contrast: #0B0E14;
+  --track-bg: #1E2430;
+  --warn-bg: #2A2414;
+  --warn-border: #4A3F20;
+  --warn-text: #D6B36B;
+  --err-bg: #2A1414;
+  --err-border: #4A2020;
+  --err-text: #E08A6B;
+  --pupil: #0B0E14;
+}
+
+:root[data-theme='light'] {
+  --bg: #F7F5F1;
+  --bg-elevated: #FFFFFF;
+  --border: #E3DFD6;
+  --border-subtle: #D8D2C4;
+  --text-primary: #1B1D22;
+  --text-secondary: #4A4F5C;
+  --text-tertiary: #6B7280;
+  --text-quaternary: #8B8F99;
+  --accent: #C4661F;
+  --accent-hover: #A9550F;
+  --accent-contrast: #FFFFFF;
+  --track-bg: #EDEAE2;
+  --warn-bg: #FBF3DC;
+  --warn-border: #E9D089;
+  --warn-text: #8A6B1E;
+  --err-bg: #FBEAE5;
+  --err-border: #E9B7A6;
+  --err-text: #B23A1E;
+  --pupil: #1B1D22;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  transition: background-color 0.3s ease;
+}
+
+.font-display { font-family: 'Fraunces', serif; }
+.font-mono { font-family: 'IBM Plex Mono', monospace; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
