@@ -4,7 +4,9 @@ RetinaAI analyzes retinal fundus images, predicts diabetic retinopathy (DR)
 severity across 5 clinical classes, and explains its predictions using
 Grad-CAM so the model's reasoning is visible, not a black box.
 
-**[Live Demo](#)** ← add your deployed link here once live
+**[Live Demo](https://retinaai-3.onrender.com)**
+
+🎥 [![Watch the demo](https://cdn.loom.com/sessions/thumbnails/3166625966e74d2e91747fa5bdcac531-with-play.gif)](https://www.loom.com/share/3166625966e74d2e91747fa5bdcac531)
 
 
 ---
