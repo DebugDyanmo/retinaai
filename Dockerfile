@@ -28,4 +28,8 @@ WORKDIR /app/backend
 # Hugging Face Spaces expects the app on port 7860
 EXPOSE 7860
 
+<<<<<<< HEAD
 CMD ["sh", "-c", "uvicorn api.main:app --host 0.0.0.0 --port ${PORT:-7860}"]
+=======
+CMD ["sh", "-c", "uvicorn api.main:app --host 0.0.0.0 --port ${PORT:-7860}"]
+>>>>>>> b46d12775518bcbf1b0b14448a261334b27f0c19
