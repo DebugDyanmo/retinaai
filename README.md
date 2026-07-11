@@ -6,7 +6,7 @@ Grad-CAM so the model's reasoning is visible, not a black box.
 
 ## 🎥 Watch the Demo Video
 
-<video src="demo.mp4" controls width="100%"></video>
+<video src="Demo.mp4" controls width="100%"></video>
 ---
 
 ## Overview
