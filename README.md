@@ -6,7 +6,8 @@ Grad-CAM so the model's reasoning is visible, not a black box.
 
 ## 🎥 Watch the Demo Video
 
-<video src="https://raw.githubusercontent.com/DebugDyanmo/retinaai/main/Demo.mp4" controls width="100%"></video>
+https://github.com/user-attachments/assets/cc8134ce-2b22-41a3-b9e7-3d295aa543b8
+
 ---
 
 ## Overview
