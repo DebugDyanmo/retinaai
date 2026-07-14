@@ -42,11 +42,6 @@ https://github.com/user-attachments/assets/cc8134ce-2b22-41a3-b9e7-3d295aa543b8
 | Severe class recall | 26% | 37% | +11 pts |
 | Severe class precision | 11% | 30% | +19 pts |
 
-Full fine-tuning (unfreezing the EfficientNet-B3 backbone, with mixed-precision
-training and early stopping) produced the largest gains on the clinically
-critical minority classes — Severe and Proliferative DR — which a naive
-frozen-backbone approach underserved due to class imbalance.
-
 ## Key Engineering Decisions
 
 - **Duplicate detection**: found 128 exact-duplicate image pairs (MD5 hash
@@ -89,32 +84,7 @@ FastAPI (/predict endpoint)
       ▼
 React + Tailwind frontend
 ```
-
-## Project Structure
-
-```
-retinaai/
-├── backend/
-│   ├── api/
-│   │   ├── main.py          # FastAPI app, /predict endpoint
-│   │   ├── inference.py     # preprocessing, model loading, prediction
-│   │   └── schemas.py       # request/response models
-│   ├── checkpoints/
-│   │   └── best_model.pth   # fine-tuned model weights
-│   ├── tests/
-│   │   └── test_api.py      # API tests incl. edge cases
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   └── App.jsx          # upload UI, prediction display, Grad-CAM view
-│   └── package.json
-├── notebooks/
-│   ├── 01_eda_preprocessing.ipynb
-│   └── 02_training.ipynb
-└── README.md
-```
-
-## Setup
+Setup
 
 ### Backend
 ```bash
@@ -159,6 +129,13 @@ python -m pytest tests/test_api.py -v
   patient-ID-based.
 - This is a research/educational project, not a validated clinical tool.
 
+## Training
+
+The model was trained using Google Colab.
+
+Model training was performed in Google Colab. This repository focuses on deployment (FastAPI + React).
+The original training notebook is not included.
+
 ## Roadmap
 
 - [x] EDA and data cleaning
@@ -171,9 +148,6 @@ python -m pytest tests/test_api.py -v
 - [x] FastAPI backend with input validation
 - [x] Automated API tests
 - [x] React + Tailwind frontend
-- [ ] Deployment (backend + frontend live links)
-- [ ] Patient-level data splitting
-- [ ] Focal loss / additional imbalance techniques
 
 ## Acknowledgments
 
